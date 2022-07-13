@@ -11,7 +11,7 @@ func VerificarCPF(cpf string) (bool, int) {
 	var cpfGerado int
 	cpfGerado, _ = strconv.Atoi(Formated(cpf)) 
 
-	if !Tamanho(cpf) || VerificarNumerosIguais(cpf) {
+	if !Tamanho(cpf) || VerificarNumerosIguais(cpf) { 
 		return false, 0
 	} else if VerificacaoPorDigito(Numbers(cpf)) {
 		return true, cpfGerado

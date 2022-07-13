@@ -267,4 +267,5 @@ func TestVerificarCPF(t *testing.T) {
 		t.Errorf("CPF %v convertido incorretamente! Esperado %v, recebido %v", cpf7, 0, cpfInInt7)
 	}
 
+
 }

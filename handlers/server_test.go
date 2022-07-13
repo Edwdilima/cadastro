@@ -10,10 +10,12 @@ import (
 
 type Usuario struct{
 	Results []struct {
+		ID int `json:"id"`
 		CPF string `json:"cpf"`
 		Nome string `json:"nome"`
 		Endereco string `json:"endereco"`
-		Telefone int64 `json:"telefone"`
+		Telefone string `json:"telefone"`
+		DataNascimeto string `json:"dataNascimento"`
 	} `json:"results"`
 	Status string `json:"status"`
 }
@@ -23,7 +25,7 @@ func TestCadastroUsuario(t *testing.T) {
 	
 	resp, err := http.Post("http://localhost:5000/usuarios",
 							 "application/json", 
-							 bytes.NewBuffer([]byte(`{"cpf":"307.037.130-27","nome":"Testinho","endereco":"Endereço Para Teste","telefone":986263622}`)))
+							 bytes.NewBuffer([]byte(`{"id":123,"cpf":"750.053.980-07","nome":"Testinho","endereco":"Endereço Para Teste","telefone":"21987298722", "dataNascimento":"01/01/2000"}`)))
 
 	if err != nil {
 		t.Errorf("Erro ao fazer requisição: %v", err)

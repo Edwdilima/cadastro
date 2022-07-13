@@ -2,7 +2,7 @@ package database
 
 import(
 	"database/sql"
-	_"github.com/go-sql-driver/mysql"	// DRive de conexão com o mysql
+	_"github.com/go-sql-driver/mysql"	// Drive de conexão com o mysql
 )
 
 // Conectar abre uma conexão com o banco de dados
