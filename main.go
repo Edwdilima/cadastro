@@ -1,23 +1,17 @@
 package main
 
 import (
-	"cadastro/handlers"
+	"cadastro/src/config"
+	"cadastro/src/router"
 	"fmt"
 	"log"
 	"net/http"
-
-	"github.com/gorilla/mux"
 )
 
 func main(){
-	router := mux.NewRouter()
-	router.HandleFunc("/usuarios", handlers.CriarUsuario).Methods(http.MethodPost)
-	router.HandleFunc("/usuarios", handlers.BuscarUsuarios).Methods(http.MethodGet)
-	router.HandleFunc("/usuarios/{id}", handlers.BuscarUsuarioPorID).Methods(http.MethodGet)
-	router.HandleFunc("/usuarios/{cpf}", handlers.BuscarUsuarioPorCpf).Methods(http.MethodGet)
-	router.HandleFunc("/usuarios/{cpf}", handlers.AtualizarUsuario).Methods(http.MethodPut)
-	router.HandleFunc("/usuarios/{cpf}", handlers.DeletarUsuario).Methods(http.MethodDelete)
+	config.Carregar()
+	r := router.Gerar()
 
-	fmt.Println("Listening on port 5000")
-	log.Fatal(http.ListenAndServe(":5000", router))
+	fmt.Printf("Escutando na porta %d\n", config.Porta)
+	log.Fatal(http.ListenAndServe(fmt.Sprintf(":%d", config.Porta), r))
 }
