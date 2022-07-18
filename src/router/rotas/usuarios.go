@@ -20,19 +20,19 @@ var rotasUsuarios = []Rota{
 		ReqAutenticacao: false,
 	},
 	{
-		URI:             "/usuarios/{usuarioCPF}", // lista um usuário pelo cpf
+		URI:             "/usuarios/{usuarioId}", // lista um usuário pelo id
 		Metodo:          http.MethodGet,
 		Funcao:          controllers.BuscarUsuario,
 		ReqAutenticacao: false,
 	},
 	{
-		URI:             "/usuarios/{usuarioCPF}", // atualiza um usuário pelo cpf
+		URI:             "/usuarios/{usuarioId}", // atualiza um usuário pelo id
 		Metodo:          http.MethodPut,
 		Funcao:          controllers.AtualizarUsuario,
 		ReqAutenticacao: false,
 	},
 	{
-		URI:             "/usuarios/{usuarioCPF}", // deleta um usuário pelo cpf
+		URI:             "/usuarios/{usuarioId}", // deleta um usuário pelo id
 		Metodo:          http.MethodDelete,
 		Funcao:          controllers.DeletarUsuario,
 		ReqAutenticacao: false,

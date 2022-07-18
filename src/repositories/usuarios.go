@@ -63,8 +63,8 @@ func (repositorio usuarios) ListarTodos() ([]models.Usuario, error){
 }
 
 // lista o usuário pelo cpf
-func (repositorio usuarios) BuscarPorCPF(cpf string) (models.Usuario, error){
-	linhas, err := repositorio.db.Query("select * from usuarios where cpf = ?", cpf)
+func (repositorio usuarios) BuscarPorCPF(id int) (models.Usuario, error){
+	linhas, err := repositorio.db.Query("select * from usuarios where id = ?", id)
 	if err != nil {
 		return models.Usuario{}, err
 	}
@@ -79,4 +79,35 @@ func (repositorio usuarios) BuscarPorCPF(cpf string) (models.Usuario, error){
 	}
 
 	return usr, nil
+}
+
+// Atualizar altera as informações de um usuário no banco de dados
+func (repositorio usuarios) Atualizar(ID int, usuario models.Usuario) error{
+	statement, err := repositorio.db.Prepare("update usuarios set nome = ?, endereco = ?, telefone = ?, dataNascimento = ? where id = ?")
+	if err != nil {
+		return err
+	}
+	defer statement.Close()
+
+	if _, err := statement.Exec(usuario.Nome, usuario.Endereco, usuario.Telefone, usuario.DataNascimento, ID); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+// Deletar remove um usuário do banco de dados
+func (repositorio usuarios) Deletar(ID int) error{
+
+	statement, err := repositorio.db.Prepare("delete from usuarios where id = ?")
+	if err != nil {
+		return err
+	}
+	defer statement.Close()
+
+	if _, err := statement.Exec(ID); err != nil {
+		return err
+	}
+
+	return nil
 }

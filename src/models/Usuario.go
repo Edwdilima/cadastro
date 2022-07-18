@@ -17,8 +17,8 @@ type Usuario struct {
 }
 
 // Preparar irá chamar os métodos para validar e formatar o nome do usuário recebido
-func (usr *Usuario) Preparar() error{
-	if err := usr.Validar(); err != nil{
+func (usr *Usuario) Preparar(etapa string) error{
+	if err := usr.Validar(etapa); err != nil{
 		return err
 	}
 
@@ -28,7 +28,7 @@ func (usr *Usuario) Preparar() error{
 }
 
 // Validar irá validar os dados do usuário
-func (usr *Usuario) Validar() error{
+func (usr *Usuario) Validar(etapa string) error{
 
 	if usr.Nome == "" {
 		return errors.New("o nome é obrigatório e não pode estar em branco")
@@ -36,7 +36,7 @@ func (usr *Usuario) Validar() error{
 
 	validarCPF, _:= validators.VerificarCPF(usr.CPF)
 
-	if !validarCPF {
+	if !validarCPF && etapa == "cadastro" {
 		return errors.New("cpf inválido")
 	}
 
