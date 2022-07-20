@@ -45,7 +45,7 @@ func TestCadastrarUsuario(t *testing.T) {
 
 }
 
-//TestCadastrarUsuarioCpfVazio testa a criação de um usuário com cpf vazio
+// TestCadastrarUsuarioCpfVazio testa a criação de um usuário com cpf vazio
 func TestCadastrarUsuarioCpfVazio(t *testing.T) {
 
 }
