@@ -50,7 +50,7 @@ func TestCadastrarUsuarioCpfVazio(t *testing.T) {
 
 }
 
-//TestCadastrarUsuarioCpfVazio testa a criação de um usuário com cpf invalido
+// TestCadastrarUsuarioCpfVazio testa a criação de um usuário com cpf invalido
 func TestCadastrarUsuarioCpfInvalido(t *testing.T) {
 
 }
