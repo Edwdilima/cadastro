@@ -50,6 +50,11 @@ func TestCadastrarUsuarioCpfVazio(t *testing.T) {
 
 }
 
+//TestCadastrarUsuarioCpfVazio testa a criação de um usuário com cpf invalido
+func TestCadastrarUsuarioCpfInvalido(t *testing.T) {
+
+}
+
 // TestBuscarUsuarios testa a busca de todos os usuários
 func TestBuscarUsuarios(t *testing.T) {
 	resp, err := http.Get("http://localhost:5000/usuarios")
