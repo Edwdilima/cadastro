@@ -21,7 +21,7 @@ type Usuario struct {
 	DataNascimento string `json:"dataNascimento,omitempty"`
 }
 
-// TestCadastrarUsuario testa o cadastro de um usuário
+//   TestCadastrarUsuario testa o cadastro de um usuário
 func TestCadastrarUsuario(t *testing.T) {
 
 	resp, err := http.Post("http://localhost:5000/usuarios", "application/json",
